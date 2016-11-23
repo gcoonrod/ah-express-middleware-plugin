@@ -1,0 +1,26 @@
+{
+  "name": "ah-express-middleware-plugin",
+  "version": "1.0.0",
+  "description": "ActionHero plugin to allow the use of Express Middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcoonrod/ah-express-middleware-plugin.git"
+  },
+  "keywords": [
+    "ActionHero",
+    "Express"
+  ],
+  "author": "greg.coonrod@gmail.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/gcoonrod/ah-express-middleware-plugin/issues"
+  },
+  "homepage": "https://github.com/gcoonrod/ah-express-middleware-plugin#readme",
+  "dependencies": {
+    "parent-require": "^1.0.0"
+  }
+}
