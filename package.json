@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/gcoonrod/ah-express-middleware-plugin/issues"
   },
-  "homepage": "https://github.com/gcoonrod/ah-express-middleware-plugin#readme"
+  "homepage": "https://github.com/gcoonrod/ah-express-middleware-plugin#readme",
+  "dependencies": {
+    "parent-require": "^1.0.0"
+  }
 }

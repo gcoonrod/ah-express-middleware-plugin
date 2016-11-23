@@ -20,12 +20,23 @@ function template(middleware, options){
 module.exports = {
     loadPriority: 1000,
     initialize: function(api, next){
+        'use strict';
         if(api.config.expressMiddleware && api.config.expressMiddleware.length > 0){
             api.config.expressMiddleware.forEach(function(middlewareConfig){
                 try {
-                    const expressMiddleware = require(middlewareConfig.name);
+                    let expressMiddleware;
+
+                    try {
+                        expressMiddleware = require(middlewareConfig.name);
+                    } catch (error){
+                        if(error.code === 'MODULE_NOT_FOUND'){
+                            const prequire = require('parent-require');
+                            expressMiddleware = prequire(middlewareConfig.name);
+                        }
+                    }
+
                     if(middlewareConfig.initFunction){
-                        middlewareConfig.initFunction(expressMiddleware, middlewareConfig.initOptions);
+                        expressMiddleware = middlewareConfig.initFunction(expressMiddleware, middlewareConfig.initOptions);
                     }
 
                     const middleware = template(expressMiddleware, middlewareConfig);
@@ -35,6 +46,7 @@ module.exports = {
                 } catch (error) {
                     api.log('Unable to load express middleware!', 'error', error);
                 }
+
             })
         }
 
